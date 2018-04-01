@@ -3,7 +3,7 @@ def getArray(seq):
     return ret
 
 
-def q1AltAgain(A):
+def fillChart(A):
     chart = getArray(A)
     chart[0][0] = True
     chart[0][A[0]] = True
