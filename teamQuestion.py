@@ -1,3 +1,4 @@
+import heapq
 def getArray(seq):
     ret = [[False for x in range(sum(seq) + 1)] for y in range(len(seq))] 
     return ret
@@ -51,18 +52,18 @@ def q4a(A):
     return solve(fillChart(A), A)
 
 def q4B(A):
-    A.sort()
-    nonZero = True
-    while (nonZero):
-        diff = A[len(A)-1] - A[len(A)-2]
-        A[len(A)-1] = diff
-        A[len(A)-2] = 0
-        A.sort()
-        #print(A)
-        if (A[len(A)-2]==0):
-            nonZero = False
+    A = [-1*x for x in A]
+    print(A)
+    heapq.heapify(A)
 
-    return A[len(A)-1]
+    while (len(A)>1):
+        max = heapq.heappop(A)*-1
+        secondMax = heapq.heappop(A)*-1
+        diff = max-secondMax
+        heapq.heappush(A,-diff)
+
+    return A[0]*-1
+
 
 
 print(q4a([10, 7, 4, 4]))
