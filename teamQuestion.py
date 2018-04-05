@@ -24,3 +24,33 @@ def printArray(A):
         
 
 
+def solve(chart, A):
+    half = sum(A) // 2
+    #get target middle column
+    middleCol = [item[half] for item in chart]
+    #if the column contains a true, then residue is 0
+    if middleCol[-1]:
+        return 0
+    else:
+        #check right side of column
+        for i in range(half + 1, len(chart[0])):
+            col = [item[i] for item in chart]
+            if col[-1]:
+                rightBound = i
+                break
+        for i in reversed(range(0, half)):
+        #check left side of column
+            col = [item[i] for item in chart]
+            if col[-1]:
+                leftBound = i
+                break
+        return abs(leftBound - rightBound)
+
+
+def q4a(A):
+    return solve(fillChart(A), A)
+
+
+
+
+            
