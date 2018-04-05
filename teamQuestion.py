@@ -50,7 +50,20 @@ def solve(chart, A):
 def q4a(A):
     return solve(fillChart(A), A)
 
+def q4B(A):
+    A.sort()
+    nonZero = True
+    while (nonZero):
+        diff = A[len(A)-1] - A[len(A)-2]
+        A[len(A)-1] = diff
+        A[len(A)-2] = 0
+        A.sort()
+        #print(A)
+        if (A[len(A)-2]==0):
+            nonZero = False
+
+    return A[len(A)-1]
 
 
-
-            
+print(q4a([10, 7, 4, 4]))
+print(q4B([10, 8, 7, 6, 5]))
